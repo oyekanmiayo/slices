@@ -1,1 +1,1 @@
-package arrays
+package slices

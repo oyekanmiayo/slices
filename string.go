@@ -1,21 +1,35 @@
-package arrays
+package slices
 
 type String struct{}
 
-func (s *String) Contains(list []string, a string) bool {
-	for _, b := range list {
-		if b == a {
+func (s String) Contains(slice []string, str string) bool {
+	for _, v := range slice {
+		if v == str {
 			return true
 		}
 	}
 	return false
 }
 
-func (s *String) Remove(list []string, a string) []string {
-	for i, v := range list {
-		if v == a {
-			return append(list[:i], list[i+1:]...)
+func (s String) Remove(slice []string, str string) []string {
+	for i, v := range slice {
+		if v == str {
+			return append(slice[:i], slice[i+1:]...)
 		}
 	}
-	return list
+	return slice
+}
+
+func (s String) Equals(sliceA []string, sliceB []string) bool {
+	if len(sliceA) != len(sliceB) {
+		return false
+	}
+
+	for i := range sliceA {
+		if sliceA[i] != sliceB[i] {
+			return false
+		}
+	}
+
+	return true
 }
